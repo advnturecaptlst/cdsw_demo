@@ -30,5 +30,22 @@ flights \
 # In this case, the full result DataFrame is printed to the
 # screen because it's so small
 
+# use toPandas() to store output into a local python dataframe
+data_from_spark = flights \
+    .filter(col('dest') == lit('LAS')) \
+    .groupBy('origin') \
+    .agg( \
+       count('*').alias('num_departures'), \
+       mean('dep_delay').alias('avg_dep_delay') \
+    ) \
+    .orderBy('avg_dep_delay') \
+    .toPandas()
+
 # End the Spark session
 spark.stop()
+
+# can still see the local
+data_from_spark
+
+# can't see spark variables
+flights 
