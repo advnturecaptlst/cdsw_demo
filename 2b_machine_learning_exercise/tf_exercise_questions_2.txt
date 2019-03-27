@@ -1,0 +1,60 @@
+# ## Exercises
+
+# 1. This code trains the model using only images of
+#    pieces from chess set A. The resulting trained 
+#    model is poor at generalizing to images of pieces
+#    from other chess sets. Modify the code in the
+#    **Preparation** section to train the model using
+#    the images of pieces from all four sets (A, B, 
+#    C, and D). How does this affect the accuracy
+#    of the model on the test (evaluation) set?
+#
+# 2. In the **TensorFlow setup** section and the
+#    **Specifying the model** section, modify 
+#    `BATCH_SIZE`, `TRAIN_STEPS`, the number of
+#    hidden layers, and the number of nodes in the
+#    hidden layers to try to improve the accuracy of
+#    the model.
+#
+# 3. After making these changes, does the model do 
+#    a better job of generating predictions on the
+#    unlabeled images?
+#
+# 4. Modify the code in the **Making predictions**
+#    section to use images from the `weird` directory
+#    instead of the `unknown` directory. How well
+#    does the model predict on these images?
+
+
+# ## Next steps
+
+# Dense neural networks (with all layers fully connected)
+# are not well-suited to image classification tasks except
+# in relatively simple cases like this one. Predictions 
+# are sensitive to the size and position of the objects 
+# in the image; they cannot robustly generalize.
+
+# Accuracy can be improved by increasing the number of
+# hidden layers and nodes, increasing the number of
+# training steps, and using larger amounts of more
+# diverse training data, but this is inefficient.
+
+# Convolutional neural networks (CNNs) provide a solution.
+# In addition to dense (fully connected) layers, they use
+# - Convolutional layers (for filtering and weighting)
+# - Pooling layers (for downsampling)
+
+# These types of layers allow DNNs to differentiate between
+# images based on subregions, and efficiently learn what
+# visual features are most important for predicting labels.
+
+# TensorFlow does not provide pre-made estimators for CNNs
+# but you can use the estimator API to build your own.
+
+# To learn more, see the TensorFlow tutorial:
+# [Build a Convolutional Neural Network using Estimators](https://www.tensorflow.org/tutorials/estimators/cnn).
+
+# Alternatively, you could build a CNN for image 
+# classification using TensorFlow's 
+# [Keras API](https://www.tensorflow.org/guide/keras)
+# which offers a higher level of abstraction.

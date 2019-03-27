@@ -1,0 +1,59 @@
+# ## Exercises
+
+# 1. This code trains the model using measurements of
+#    pieces from just one brand of chess set ("set A").
+#    In the **Preparation** section, modify the code
+#    to load data with measurements from four different
+#    brands of chess sets (A, B, C, and D). This data
+#    is in the file `four_chess_sets.csv`. How does 
+#    this affect the accuracy of the model on the test 
+#    (evaluation) set?
+#
+# 2. In the **Specifying the model** section, modify
+#    the list of feature columns to add the column that
+#    specifies which brand of set each piece is from.
+#    Use the following code to do this:
+#    ```python
+#    tf.feature_column.indicator_column(
+#      tf.feature_column.categorical_column_with_vocabulary_list(
+#       key='set',
+#       vocabulary_list=['A', 'B', 'C', 'D']
+#      )
+#    )
+#    ```
+#    Does the model perform better when it knows which
+#    set each piece is from?
+#
+#    After you make this change, the code in the 
+#    **Making predictions** section will fail unless
+#    you also add the `set` feature to the `predict_x`
+#    dictionary:
+#    ```python
+#    'set': ['A', 'A', 'A', 'A', 'A', 'A'],
+#    ```
+#
+# 3. In the **TensorFlow setup** section and the
+#    **Specifying the model** section, modify 
+#    `BATCH_SIZE`, `TRAIN_STEPS`, the number of
+#    hidden layers, and the number of nodes in the
+#    hidden layers to try to improve the accuracy of
+#    the model.
+
+
+# ## Next steps
+
+# Using only the three measurements of each chess piece
+# (base diameter, height, and weight) as the features, 
+# the model cannot as accurately and efficiently classify
+# pieces drawn from multiple different brands of chess 
+# sets with different dimensions and weights.
+
+# In a real-world application, a model like this might
+# need to classify pieces without knowledge of which
+# brand of chess set they came from. Also, collecting
+# measurements like these for every piece might be 
+# impractical in a real-world application.
+
+# An algorithm that could use _images_ of the chess
+# pieces as the feature might be a more practical choice
+# for classifying pieces drawn from different chess sets.
